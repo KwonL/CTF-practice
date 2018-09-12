@@ -1,5 +1,6 @@
 import flask
 import os
+from search import search
 
 
 app = flask.Flask(__name__)
@@ -13,6 +14,8 @@ def index():
 @app.route('/shrine/<path:shrine>')
 def shrine(shrine):
     def safe_jinja(s):
+        for path, obj in search(flask.request, 10) :
+            print(obj, path)
         s = s.replace('(', '').replace(')', '')
         blacklist = ['config', 'self']
         return ''.join(['{{% set {}=None%}}'.format(c) for c in blacklist])+s
