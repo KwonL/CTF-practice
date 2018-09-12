@@ -29,7 +29,7 @@ def test_for_100_time(prefix) :
     enc_flag = temp_string
 
     max_count = 0
-    max_c = ''
+    max_c = list()
 
     for c in string.digits + "abcdef" :
         data = prefix + c + ('0' * (47 - len(prefix) - 2)) + '}'
@@ -53,31 +53,51 @@ def test_for_100_time(prefix) :
 
         if match_length > max_count :
             max_count = match_length
-            max_c = c
+            max_c = [c]
+        elif match_length == max_count :
+            max_c.append(c)
 
     return max_c, max_count
 
     nc.close()
 
 def main() :
-    prefix = "TWCTF{67ced5346146c105075443add26fd7efd72763d"
+    # prefix = "TWCTF{"
 
-    count = 0
+    # count = 0
     
-    while True :
-        c, max_count = test_for_100_time(prefix)
+    # while True :
+    #     max_list, max_count = test_for_100_time(prefix)
 
-        if max_count > count :
-            prefix += c
-            count = max_count
+    #     if max_count > count :
+    #         prefix += c
+    #         count = max_count
 
-        print(count, prefix)
+    #     print(count, prefix)
 
-        if len(prefix.replace('0', '')) == 47 :
-            print(prefix)
-            break
+    #     if len(prefix.replace('0', '')) == 47 :
+    #         print(prefix)
+    #         break
 
-    return 0
+    # return 0
+
+    flag_len = 47
+    flag_prefix = "TWCTF"
+    maxes = ['{']
+    current_score = 8
+    url = "crypto.chal.ctf.westerns.tokyo"
+    port = 14791
+    while True:
+        for c in maxes:
+            flag_prefix_test = flag_prefix + c
+            new_maxes, max_score = test_for_100_time(flag_prefix_test)
+            if (max_score > current_score) or ((max_score == current_score) and len(new_maxes) < 16):
+                current_score = max_score
+                maxes = new_maxes
+                flag_prefix += c
+                print(flag_prefix)
+                break
+
 
 if __name__ == '__main__' :
     main()
