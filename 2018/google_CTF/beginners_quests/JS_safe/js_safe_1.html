@@ -111,6 +111,7 @@ async function x(password) {
         g: new TextEncoder().encode(password),
         h: 0,
     };
+    var hash = [];
     for (var i = 0; i < code.length; i += 4) {
         var [lhs, fn, arg1, arg2] = code.substr(i, 4);
         try {
@@ -118,15 +119,16 @@ async function x(password) {
         } catch(e) {
             env[lhs] = new env[fn](env[arg1], env[arg2]);
         }
-        console.log(lhs)
-        console.log(env[lhs])
         if (env[lhs] instanceof Promise){ 
-          console.log("Here")
-          console.log(lhs)
-          console.log(String(env[lhs]))
           env[lhs] = await env[lhs];
         }
+        
+
+        if (fn == 'ѡ') hash.push(env[arg1][1]);
     }
+
+    console.log(hash);
+
     return !env.h;
 }
 </script>
