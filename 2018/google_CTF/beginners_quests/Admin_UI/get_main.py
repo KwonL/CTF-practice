@@ -9,9 +9,12 @@ def main() :
     conn.readuntil("3) Quit")
 
     conn.sendline("2")
+    conn.readuntil("shown?")
+
     conn.sendline("../main")
 
-    main_binary = conn.readuntil("1) ")
+    main_binary = conn.readuntil("3) Quit") 
+    conn.sendline("3")
     print(sys.getsizeof(main_binary))
 
     with open("./main", "wb") as f :
