@@ -38,3 +38,17 @@ finally get password!
 
 CTF{Two_PasSworDz_Better_th4n_1_k?}
 
+
+# Admin UI 3
+
+I can also find several string which is some kind of shell command. 
+
+'debug', 'shell', 'echo'..and so on..
+
+We can use 'echo' command, or other things. We can execute shell by 'call 0x41414227' @ 0x41414349
+
+using buffer overflow!
+
+from input to rbp --> distance is 0x30, so we send 'A' * 0x38 + (0x41414349)
+
+CTF{c0d3ExEc?W411_pL4y3d}
