@@ -30,8 +30,8 @@ long get_long() {
       c = getchar();
     while(is_digit(c)) {
       if(l >= LONG_MAX) {
-	l = LONG_MAX;
-	break;
+        l = LONG_MAX;
+        break;
       }
       l *= 10;
       l += c - '0';
