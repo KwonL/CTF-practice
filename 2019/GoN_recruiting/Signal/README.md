@@ -1,0 +1,3 @@
+# Signal
+
+`GoN{TALKWITHMORSECODE?}`
