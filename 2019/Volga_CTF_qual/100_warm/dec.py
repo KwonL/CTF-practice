@@ -1,0 +1,13 @@
+#!/usr/bin/python
+
+alist = [0x76, 0x4e, 0x1e, 0x15, 0x5e, 0x1c, 0x21, 0x1, 0x34, 0x7, 0x35, 0x11, 0x37, 0x3c, 0x72, 0x47]
+
+ans = str()
+for idx, a in enumerate(alist) :
+    if idx == 0 :
+        ans += chr(a)
+    else :
+        alist[idx] = a ^ alist[idx - 1]
+        ans += chr(alist[idx])
+
+print(ans)
