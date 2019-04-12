@@ -1,4 +1,1 @@
-break *main
-break *0x0040101d
-break *edit_name
-break *save_game
+break *edit_name + 43
