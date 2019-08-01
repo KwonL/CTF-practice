@@ -1,0 +1,27 @@
+1 1: list dir
+2: add file
+3: add dir
+4: show file
+5: change directory
+6: remove file
+7: quit
+
+
+파일 하나에 128 크기
+name 길이는 0x26
+
+최대 파일은 255개
+
+
+첫번째 bit 1이면 dir, 2이면 file
+39더했을 때 1이면 valid 아니면 freed?
+
+
+libc address: 0x7f63f3185000
+__tls_get_addr got address: 00000000003F0B88
+
+
+
+heap overflow 가능 by directory로 들어가기
+이거로 libc의 got에 overwtie.
+
